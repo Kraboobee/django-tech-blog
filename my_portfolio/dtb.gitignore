@@ -1,7 +1,0 @@
-###Django###
-
-*.log
-*.pot
-*.pyc
-sKeys.py
-settings.py
