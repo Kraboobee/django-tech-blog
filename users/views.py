@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 
 # Form for user registration
@@ -22,3 +23,7 @@ def register(request):
 		form = UserRegisterForm()
 	return render(request, 'users/register.html', {'form': form})
 
+# This ensures that a user is not able to access the profile page unless they are logged in
+@login_required
+def profile(request):
+	return render(request, 'users/profile.html')

@@ -1,5 +1,9 @@
 ###Django###
 
+# Use the below to ensure that this is ignored 
+# git commit -am "Remove ignored files"
+# https://stackoverflow.com/a/19095988 for more info
+
 *.log
 *.pot
 *.pyc
