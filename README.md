@@ -8,13 +8,13 @@ The content will focus on productivity, interesting tech products, and useful pr
 Requirements:
   Python 3.8
   Pip-install:
-    django
-    Pillow
-    django-crispy-forms
+    django,
+    Pillow,
+    django-crispy-forms;
     
 Useful Sublime plugins:
-  Djaneiro
-  Emmet
-  Hayaku
+  Djaneiro,
+  Emmet,
+  Hayaku,
   Color Picker
   
