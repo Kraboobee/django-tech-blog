@@ -27,6 +27,7 @@ class PostListView(ListView):
 	model = Post
 	template_name = 'blog/home.html'
 	context_object_name = 'posts'
+	ordering = ['-date_posted']
 	paginate_by = 5
 
 
@@ -34,16 +35,18 @@ class SearchResultListView(ListView):
 	model = Post
 	template_name = 'blog/search_results.html'
 	context_object_name = 'posts'
+	ordering = ['-date_posted']
 	paginate_by = 5
 
 	def get_queryset(self):
 		results = Post.objects.filter(
-			Q(title__icontains=self.kwargs.get('title')) |
-			Q(content__icontains=self.kwargs.get('title'))
+			Q(title__icontains=self.kwargs.get('q')) |
+			Q(content__icontains=self.kwargs.get('q'))
 			).distinct()
 		return results.order_by('-date_posted')
 
-
+# def search(request):
+	
 	# def get_queryset(query=None):
 	# 	query = ""
 	# 	queryset = []
