@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.db.models import Q
 from django.contrib.auth.mixins import (
 	LoginRequiredMixin,
 	UserPassesTestMixin
@@ -26,8 +27,38 @@ class PostListView(ListView):
 	model = Post
 	template_name = 'blog/home.html'
 	context_object_name = 'posts'
+	ordering = ['-date_posted']
 	paginate_by = 5
 
+
+class SearchResultListView(ListView):
+	model = Post
+	template_name = 'blog/search_results.html'
+	context_object_name = 'posts'
+	ordering = ['-date_posted']
+	paginate_by = 5
+
+	def get_queryset(self):
+		results = Post.objects.filter(
+			Q(title__icontains=self.kwargs.get('q')) |
+			Q(content__icontains=self.kwargs.get('q'))
+			).distinct()
+		return results.order_by('-date_posted')
+
+	
+	# def get_queryset(query=None):
+	# 	query = ""
+	# 	queryset = []
+	# 	queries = query.split(" ")
+	# 	for q in queries:
+	# 		posts = Post.objects.filter(
+	# 				Q(title__icontains=q) or
+	# 				Q(content__icontains=q)
+	# 			).distinct()
+			
+	# 		for post in posts:
+	# 			queryset.append(post)
+	# 	return list(set(queryset))
 
 class UserPostListView(ListView):
 	model = Post
