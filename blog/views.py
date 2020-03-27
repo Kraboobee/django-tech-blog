@@ -45,7 +45,6 @@ class SearchResultListView(ListView):
 			).distinct()
 		return results.order_by('-date_posted')
 
-# def search(request):
 	
 	# def get_queryset(query=None):
 	# 	query = ""

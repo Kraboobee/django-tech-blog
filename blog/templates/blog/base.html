@@ -39,6 +39,12 @@ Django codeblocks are used to add the relevant data to each individual page
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
+				{% comment %} <form class="form-inline mb-2" action="{% url 'search-results' q %}" method="GET"/>
+					<div class="form-group  mx-sm-3 mb-2">
+						<input type="text" class="form-control" id="q">
+					</div>
+					<button type="submit" class="btn btn-info mb-2">Search</button>
+				</form> {% endcomment %}
        		{% if user.is_authenticated %}
 	          <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
 	          <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
