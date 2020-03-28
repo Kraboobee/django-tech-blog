@@ -1,13 +1,9 @@
 body {
-    /* background-color: rgb(235, 240, 245); */
-    /* background: #fafafa; */
-  
     color: #fff4f4; 
     margin-top: 5rem;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    /* color: rgb(219, 46, 133); */
     color: #cbd5db;
   }
   
@@ -20,11 +16,7 @@ body {
     box-shadow:  10px 10px 20px #00252f, 
     -10px -10px 20px #00313d;
   }
-  
-  .navbar-custom {
-    color: #EBCB8B
-  }
-  
+
   .site-header .navbar-nav .nav-link {
     color: #ffffff;
   }
@@ -93,25 +85,4 @@ body {
     font-size: 2.5rem;
   }
 
-  .btn-neumo {
-    color: white;
-    background: linear-gradient(145deg, #002731, #002e3a);
-    box-shadow:  6px 6px 13px #00252f, 
-    -6px -6px 13px #00313d;
-  }
-
-  .btn-neumo:hover {
-    color: white;
-    background: linear-gradient(145deg, #002e3a, #002731);
-    box-shadow:  6px 6px 13px #00252f, 
-    -6px -6px 13px #00313d;
-  }
-
-  .btn-outline-neumo {
-    color: white;
-    border-radius: 15px;
-    background: #002b36;
-    box-shadow: inset 6px 6px 13px #00252f, 
-    inset -6px -6px 13px #00313d;
-  }
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */
