@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,7 @@ urlpatterns = [
     		auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), 
     		name='password_reset_complete'),
     path('', include('blog.urls')),
+    url(r'^api-auth/', include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:

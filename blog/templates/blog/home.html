@@ -11,6 +11,12 @@
 		    </div>
 		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
 		    <p class="article-">{{ post.content }}</p>
+			<div class="likes-counter">
+				<p>
+					<a class="btn btn-light mr-2" href="{% url 'post-like' post.id %}">Like</a>
+					{{ post.likes.count }}
+				</p>
+			</div>
 		  </div>
 		</article>
 	{% endfor %}

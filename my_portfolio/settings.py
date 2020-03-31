@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
-    # 'keyboard_shortcuts',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,9 +141,13 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'kraboobee@gmail.com'
 SERVER_EMAIL = 'kraboobee@gmail.com'
 
-# HOTKEYS = [
-#             {'keys': 'n + p',  # New Blog Post
-#             'link': 'post-create'},
-#         ]
-# SPECIAL_DISABLED = True
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
+    ]
+}

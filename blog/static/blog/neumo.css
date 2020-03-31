@@ -85,4 +85,7 @@ body {
     font-size: 2.5rem;
   }
 
+  .likes-counter {
+    text-align: right;
+  }
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */

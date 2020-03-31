@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+
+[packages]
+django = "*"
+django-redis = ">=4.11.0"
+Pillow = "*"
+django-crispy = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
+
+[requires]
+python_version = "3.8"

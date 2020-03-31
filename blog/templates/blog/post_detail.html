@@ -1,4 +1,38 @@
 {% extends "blog/base.html" %}
+
+<script>
+{% block jquery %}
+function updateText(btn, newLikes, verb){
+	btn.text(verb + " " + newLikes)
+}
+$(".like-btn").click(function(e){
+	e.preventDefault()
+	var this_ = $(this)
+	var likeUrl = this_.attr("data-href")
+	var likeCount = parseInt(this_.attr("data-likes"))
+	$.ajax({
+		url: likeUrl,
+		method: "GET",
+		data: {},
+		success: function(data){
+			console.log(data)
+			var newLikes;
+			if (data.liked){
+				newLikes = likeCount + 1
+				updateText(this_, newLikes, "Unlike")
+			} else {
+				newLikes = likeCount
+				updateText(this_, newLikes, "Like")
+			}
+		}, error: function(error) {
+			console.log(error)
+			console.log("error")			
+		}
+	})
+}) 
+{% endblock %}
+</script>
+
 {% block content %}
 	<article class="media content-section">
 	  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
@@ -14,7 +48,12 @@
 	      {% endif %}
 	    </div>
 	    <h2 class="article-title">{{ object.title }}</h2>
-	    <p class="article-content">{{ object.content }}</p>
+		<p class="article-content">{{ object.content }}</p>
+		<div class="likes-counter">
+			<p>
+				<a class="btn btn-light like-btn mr-2" data-href="{% url 'post-like-api' post.id %}" data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like {{ post.likes.count }}</a>
+			</p>
+		</div>
 	  </div>
 	</article>
 {% endblock content %}
