@@ -5,6 +5,7 @@ from .views import (
 	PostDeleteView, 
 	PostListView,
 	PostUpdateView,
+    ResourceListView,
     SearchResultListView,
     UserPostListView
 )
@@ -20,4 +21,6 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('about/', views.about, name='blog-about'),
     path('contact/', views.contact, name='blog-contact'),
+    path('resources/', views.resources, name='resources'),
+    path('resources/<str:category>/', ResourceListView.as_view(), name='resources-list'),
 ]
