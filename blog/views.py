@@ -12,8 +12,12 @@ from django.views.generic import (
 	ListView,
 	UpdateView
 )
-from .models import Post
-
+from .models import (
+	Post, 
+	Resource
+)
+import markdown
+# import django_filters
 
 # Renders the blog home and about pages
 
@@ -114,3 +118,14 @@ def about(request):
 def contact(request):
 	return render(request, 'blog/contact.html', {'title': 'Contact'})
 
+def resources(request):
+	return render(request, 'blog/resources.html', {'title': 'resources'})
+
+class ResourceListView(ListView):
+	model = Resource
+	template_name = 'blog/resource_list.html'
+	context_object_name = 'resources'
+
+	def get_queryset(self):
+		results = Resource.objects.filter(Q(category__icontains=self.kwargs.get('category')))
+		return results
