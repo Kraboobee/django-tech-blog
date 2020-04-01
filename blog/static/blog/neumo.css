@@ -38,6 +38,15 @@ body {
     margin-bottom: 20px;
   }
 
+  .content-sink {
+    background: linear-gradient(145deg, #002e3a, #002731);
+    box-shadow:  inset 10px 10px 20px #00252f, 
+    inset -10px -10px 20px #00313d;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
   .article-title {
     color: #36838d;
   }
@@ -88,4 +97,17 @@ body {
   .likes-counter {
     text-align: right;
   }
+  .row{
+    column-count: 2;
+  }
+
+  .column-a {
+    float: left;
+    width: 40%;
+  }
+
+  .column-b {
+    float: left;
+  }
+
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */

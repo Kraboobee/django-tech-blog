@@ -29,7 +29,7 @@ Django codeblocks are used to add the relevant data to each individual page
 	<header class="site-header">
 	  <nav class="navbar navbar-expand-md navbar-dark bg-custom fixed-top">
 	    <div class="container">
-	      <a class="navbar-brand mr-4" href="/">Coded-19</a>
+	      <a class="navbar-brand mr-4" href="/admin">Coded-19</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -78,7 +78,7 @@ Django codeblocks are used to add the relevant data to each individual page
 	        <p class='text-muted'>Side bar out of your league too, ah
 	          <div class="list-group">
 	            <a href="#" class="list-group-item list-group-item-action">Latest Posts</a>
-	            <a href="#" class="list-group-item list-group-item-action">Community</li>
+	            <a href="{% url 'resources' %}" class="list-group-item list-group-item-action">Resources</li>
 	            <a href="{% url 'blog-contact' %}" class="list-group-item list-group-item-action">Contact</a>
 				</a>
 	          </d>
@@ -87,6 +87,8 @@ Django codeblocks are used to add the relevant data to each individual page
 	    </div>
 	  </div>
 	</main>
+
+	<!-- Optional JavaScript -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
