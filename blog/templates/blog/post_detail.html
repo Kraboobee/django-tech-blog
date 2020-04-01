@@ -3,7 +3,7 @@
 <script>
 {% block jquery %}
 function updateText(btn, newLikes, verb){
-	btn.text(verb + " " + newLikes)
+	btn.text(verb + ": " + newLikes)
 }
 $(".like-btn").click(function(e){
 	e.preventDefault()
@@ -51,7 +51,7 @@ $(".like-btn").click(function(e){
 		<p class="article-content">{{ object.content }}</p>
 		<div class="likes-counter">
 			<p>
-				<a class="btn btn-light like-btn mr-2" data-href="{% url 'post-like-api' post.id %}" data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like {{ post.likes.count }}</a>
+				<a class="btn btn-light like-btn mr-2" data-href="{% url 'post-like-api' post.id %}" data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like: {{ post.likes.count }}</a>
 			</p>
 		</div>
 	  </div>
