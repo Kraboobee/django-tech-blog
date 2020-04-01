@@ -88,39 +88,6 @@ Django codeblocks are used to add the relevant data to each individual page
 	  </div>
 	</main>
 
-	<!-- Optional JavaScript -->
-	<script>
-		$(document).ready(function () {
-			function updateText(btn, newLikes, verb) {
-				btn.text(newLikes + " " + verb)
-			}
-			$(".like-btn").click(function (e) {
-				e.preventDefault()
-				var this_ = $(this)
-				var likeUrl = this_.attr("data-href")
-				var likeCount = parseInt(this_.attr("data-likes"))
-				$.ajax({
-					url: likeUrl,
-					method: "GET",
-					data: {},
-					success: function (data) {
-						console.log(data)
-						var newLikes;
-						if (data.liked) {
-							newLikes = likeCount + 1
-							updateText(this_, newLikes, "Unlike")
-						} else {
-							newLikes = likeCount - 1
-							updateText(this_, newLikes, "Like")
-						}
-					}, error: function (error) {
-						console.log(error)
-						console.log("error")
-					}
-				})
-			})
-		})
-	</script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -79,18 +79,6 @@ class UserPostListView(ListView):
 class PostDetailView(DetailView):
 	model = Post
 
-class PostLikeToggleView(RedirectView):
-	def get_redirect_url(self, *args, **kwargs):
-		post = get_object_or_404(Post, pk=self.kwargs.get('pk'))
-		user = self.request.user
-		if user.is_authenticated:
-			if user in post.likes.all():
-				post.likes.remove(user)
-			else:
-				post.likes.add(user)
-		return post.get_absolute_url()
-
-
 class PostLikeAPIToggle(APIView):
 	authentication_classes = [authentication.SessionAuthentication,]
 	permission_classes = [permissions.IsAuthenticated,]
@@ -98,19 +86,20 @@ class PostLikeAPIToggle(APIView):
 	def get(self, request, pk=None, format=None):
 		post = get_object_or_404(Post, pk=self.kwargs.get('pk'))
 		user = self.request.user
-		updated = False
 		liked = False
+		updated = False
 		if user.is_authenticated:
 			if user in post.likes.all():
 				liked = False
 				post.likes.remove(user)
+				updated = True
 			else:
 				liked = True
 				post.likes.add(user)
-			updated = True
+				updated = True
 		data = {
-			"updated" : updated,
-			"liked" : liked
+			"updated": updated,
+			"liked" : liked,
 		}
 		return Response(data)
 

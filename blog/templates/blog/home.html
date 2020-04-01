@@ -1,5 +1,4 @@
 {% extends "blog/base.html" %}
-{% block content %}
 
 <script>
 	{% block jquery %}
@@ -34,6 +33,7 @@
 	{% endblock %}
 </script>
 
+{% block content %}
 	{% for post in posts  %}
 		<article class="media content-section">
 		  <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -45,8 +45,12 @@
 		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
 		    <p class="article-">{{ post.content }}</p>
 			<div class="likes-counter">
-				<p>
-					<a class="btn btn-light like-btn mr-2" data-href="{% url 'post-like-api' post.id %}" data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like: {{ post.likes.count }}</a>
+				<p>				
+					{% if request.user in post.likes.all %}
+						<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}" data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike: {{ post.likes.count }}</a>
+					{% else %}
+						<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}" data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like: {{ post.likes.count }}</a>
+					{% endif %}	
 				</p>
 			</div>
 		  </div>

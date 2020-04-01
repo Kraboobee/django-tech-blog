@@ -1,4 +1,38 @@
 {% extends "blog/base.html" %}
+
+<script>
+	{% block jquery %}
+	function updateText(btn, newLikes, verb) {
+		btn.text(verb + ": " + newLikes)
+	}
+	$(".like-btn").click(function (e) {
+		e.preventDefault()
+		var this_ = $(this)
+		var likeUrl = this_.attr("data-href")
+		var likeCount = parseInt(this_.attr("data-likes"))
+		$.ajax({
+			url: likeUrl,
+			method: "GET",
+			data: {},
+			success: function (data) {
+				console.log(data)
+				var newLikes;
+				if (data.liked) {
+					newLikes = likeCount + 1
+					updateText(this_, newLikes, "Unlike")
+				} else {
+					newLikes = likeCount
+					updateText(this_, newLikes, "Like")
+				}
+			}, error: function (error) {
+				console.log(error)
+				console.log("error")
+			}
+		})
+	})
+	{% endblock %}
+</script>
+
 {% block content %}
 	<h1 class="mb-3">Posts mentioning {{ view.kwargs.q }} ({{ page_obj.paginator.count }})</h1>
 	{% for post in posts  %}
@@ -10,30 +44,43 @@
 		      <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
 		    </div>
 		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-		    <p class="article-content">{{ post.content }}</p>
+			<p class="article-content">{{ post.content }}</p>
+			<div class="likes-counter">
+				<p>
+					{% if request.user in post.likes.all %}
+					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
+						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike:
+						{{ post.likes.count }}</a>
+					{% else %}
+					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
+						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
+						{{ post.likes.count }}</a>
+					{% endif %}
+				</p>
+			</div>
 		  </div>
 		</article>
 	{% endfor %}
 	{% if is_paginated %}
 		
 		{% if page_obj.has_previous %}
-			<a class="btn btn-outline-light mb-4" href="?page=1">First</a>
-			<a class="btn btn-outline-light mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+			<a class="btn btn-outline-success mb-4" href="?page=1">First</a>
+			<a class="btn btn-outline-success mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
 		{% endif %}
 
 		{% for num in page_obj.paginator.page_range %}
 
 			{% if page_obj.number == num %}
-				<a class="btn btn-light mb-4" href="?page={{ num }}">{{ num }}</a>
+				<a class="btn btn-success mb-4" href="?page={{ num }}">{{ num }}</a>
 			{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
-				<a class="btn btn-outline-light mb-4" href="?page={{ num }}">{{ num }}</a>
+				<a class="btn btn-outline-success mb-4" href="?page={{ num }}">{{ num }}</a>
 			{% endif %}
 
 		{% endfor %}
 
 		{% if page_obj.has_next %}
-			<a class="btn btn-outline-light mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-			<a class="btn btn-outline-light mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+			<a class="btn btn-outline-success mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+			<a class="btn btn-outline-success mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
 		{% endif %}
 
 	{% endif %}
