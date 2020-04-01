@@ -1,3 +1,6 @@
+from rest_framework.views import APIView
+from rest_framework import authentication, permissions
+from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
 from django.contrib.auth.mixins import (
@@ -111,6 +114,31 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user == post.author:
 			return True
 		return False
+
+
+class PostLikeAPIToggle(APIView):
+	authentication_classes = [authentication.SessionAuthentication, ]
+	permission_classes = [permissions.IsAuthenticated, ]
+
+	def get(self, request, pk=None, format=None):
+		post = get_object_or_404(Post, pk=self.kwargs.get('pk'))
+		user = self.request.user
+		liked = False
+		updated = False
+		if user.is_authenticated:
+			if user in post.likes.all():
+				liked = False
+				post.likes.remove(user)
+				updated = True
+			else:
+				liked = True
+				post.likes.add(user)
+				updated = True
+			data = {
+					"updated": updated,
+							"liked": liked,
+				}
+		return Response(data)
 
 def about(request):
 	return render(request, 'blog/about.html', {'title': 'About'})

@@ -1,4 +1,38 @@
 {% extends "blog/base.html" %}
+
+<script>
+	{% block jquery %}
+	function updateText(btn, newLikes, verb) {
+		btn.text(verb + ": " + newLikes)
+	}
+	$(".like-btn").click(function (e) {
+		e.preventDefault()
+		var this_ = $(this)
+		var likeUrl = this_.attr("data-href")
+		var likeCount = parseInt(this_.attr("data-likes"))
+		$.ajax({
+			url: likeUrl,
+			method: "GET",
+			data: {},
+			success: function (data) {
+				console.log(data)
+				var newLikes;
+				if (data.liked) {
+					newLikes = likeCount + 1
+					updateText(this_, newLikes, "Unlike")
+				} else {
+					newLikes = likeCount
+					updateText(this_, newLikes, "Like")
+				}
+			}, error: function (error) {
+				console.log(error)
+				console.log("error")
+			}
+		})
+	})
+	{% endblock %}
+</script>
+
 {% block content %}
 	
 	{% for post in posts  %}
@@ -10,7 +44,20 @@
 		      <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
 		    </div>
 		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-		    <p class="article-">{{ post.content }}</p>
+			<p class="article-">{{ post.content }}</p>
+			<div class="likes-counter">
+				<p>
+					{% if request.user in post.likes.all %}
+					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
+						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike:
+						{{ post.likes.count }}</a>
+					{% else %}
+					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
+						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
+						{{ post.likes.count }}</a>
+					{% endif %}
+				</p>
+			</div>
 		  </div>
 		</article>
 	{% endfor %}
