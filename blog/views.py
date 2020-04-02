@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework import authentication, permissions
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from django.contrib.auth.mixins import (
 	LoginRequiredMixin,
@@ -15,7 +15,11 @@ from django.views.generic import (
 	ListView,
 	UpdateView
 )
+from django import forms
+from django.forms import ModelForm
+from .forms import CommentForm
 from .models import (
+	Comment,
 	Post, 
 	Resource
 )
@@ -82,6 +86,26 @@ class UserPostListView(ListView):
 class PostDetailView(DetailView):
 	model = Post
 
+class CommentForm(forms.ModelForm):
+
+	class Meta:
+		model = Comment
+		fields = ('body',)
+
+def add_comment_to_post(request,pk):
+	post = get_object_or_404(Post, pk=pk)
+	if request.method == "POST":
+		form = CommentForm(request.POST)
+		form.instance.user = request.user
+		if form.is_valid():
+			comment = form.save(commit = False)
+			comment.post = post
+			comment.save()
+			return redirect('post-detail', pk=post.pk)
+	else:
+		form = CommentForm()
+	return render(request, 'blog/post_comment.html', {'form': form})
+
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
@@ -136,7 +160,7 @@ class PostLikeAPIToggle(APIView):
 				updated = True
 			data = {
 					"updated": updated,
-							"liked": liked,
+					"liked": liked,
 				}
 		return Response(data)
 
