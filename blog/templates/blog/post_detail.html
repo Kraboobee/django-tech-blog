@@ -60,8 +60,19 @@
 					data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
 					{{ post.likes.count }}</a>
 				{% endif %}
+				<a class="btn btn-outline-success" style="float: right;" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 			</p>
 		</div>
-	  </div>
+		{% for comment in post.comments.all  %}
+			<div class="comment content-section">
+				<div class="date">
+					<strong>{{ comment.user.username }}</strong> | <small class="text-muted">{{ comment.created_on|date:"F d, Y" }}</small> 
+				</div>
+				<p>{{ comment.body|linebreaks}}</p>
+			</div>
+		{% empty %}
+			<p>No comments here yet</p>
+		{% endfor %}
+	</div>
 	</article>
 {% endblock content %}

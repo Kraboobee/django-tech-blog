@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- 
+	This shows the registration form
+	It also gives the user an option to sign in if they already have an account
+	 -->
+<div class="content-section">
+    <h2 class="article-title">New Comment</h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+{% endblock content %}

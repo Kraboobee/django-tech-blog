@@ -18,6 +18,8 @@ class Post(models.Model):
 	def get_absolute_url(self):
 		return reverse('post-detail', kwargs={'pk': self.pk})
 
+
+
 YOUTUBE = 'Youtube'
 DOCUMENTATION = 'Documentation'
 SUBREDDIT = 'Subreddits'
@@ -52,3 +54,15 @@ class Resource(models.Model):
 	def __str__(self):
 		return self.category
 	
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment on {} by {}'.format(self.created_on, self.user)

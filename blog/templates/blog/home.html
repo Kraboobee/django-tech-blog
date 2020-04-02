@@ -56,6 +56,7 @@
 						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
 						{{ post.likes.count }}</a>
 					{% endif %}
+					<a class="comment-counter" href="{% url 'post-detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
 				</p>
 			</div>
 		  </div>

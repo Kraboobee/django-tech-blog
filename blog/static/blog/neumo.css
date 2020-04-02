@@ -28,11 +28,26 @@ body {
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
+
+  .comment {
+    /* border-top: 1px solid #e3e3e3; */
+    margin: 20px 0px 20px;
+  }
+
+  .comment-counter {
+    margin: 10px 0px 20px;
+    float: right;
+  }
+
+  .likes-counter {
+    padding-top: 10px;
+    text-align: left;
+  }
   
   .content-section {
-    background: linear-gradient(145deg, #002e3a, #002731);
-    box-shadow:  10px 10px 20px #00252f, 
-    -10px -10px 20px #00313d;
+    background: #002b36;
+    box-shadow:  6px 6px 15px #00222a, 
+                -6px -6px 12px #00303d;
     padding: 10px 20px;
     border-radius: 20px;
     margin-bottom: 20px;
