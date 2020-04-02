@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 
+<!-- This script is used to make the like button interactive -->
 <script>
 	{% block jquery %}
 	function updateText(btn, newLikes, verb) {
@@ -36,6 +37,7 @@
 {% block content %}
 	
 	{% for post in posts  %}
+
 		<article class="media content-section">
 		  <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
 		  <div class="media-body">
@@ -47,21 +49,29 @@
 			<p class="article-">{{ post.content }}</p>
 			<div class="likes-counter">
 				<p>
+
 					{% if request.user in post.likes.all %}
+
 					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
 						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike:
 						{{ post.likes.count }}</a>
+
 					{% else %}
+
 					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
 						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
 						{{ post.likes.count }}</a>
+
 					{% endif %}
+
 					<a class="comment-counter" href="{% url 'post-detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
 				</p>
 			</div>
 		  </div>
 		</article>
+
 	{% endfor %}
+
 	{% if is_paginated %}
 		
 		{% if page_obj.has_previous %}
@@ -85,4 +95,5 @@
 		{% endif %}
 
 	{% endif %}
+
 {% endblock content %}

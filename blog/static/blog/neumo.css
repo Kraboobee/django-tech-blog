@@ -29,39 +29,7 @@ body {
     font-weight: 500;
   }
 
-  .comment {
-    /* border-top: 1px solid #e3e3e3; */
-    margin: 20px 0px 20px;
-  }
-
-  .comment-counter {
-    margin: 10px 0px 20px;
-    float: right;
-  }
-
-  .likes-counter {
-    padding-top: 10px;
-    text-align: left;
-  }
   
-  .content-section {
-    background: #002b36;
-    box-shadow:  6px 6px 15px #00222a, 
-                -6px -6px 12px #00303d;
-    padding: 10px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-
-  .content-sink {
-    background: linear-gradient(145deg, #002e3a, #002731);
-    box-shadow:  inset 10px 10px 20px #00252f, 
-    inset -10px -10px 20px #00313d;
-    padding: 10px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-
   .article-title {
     color: #36838d;
   }
@@ -108,18 +76,44 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+  
+  
+  .content-section {
+    background: #002b36;
+    box-shadow:  6px 6px 15px #00222a, 
+    -6px -6px 12px #00303d;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .comment {
+    margin: 20px 0px 20px;
+  }
+  
+  .comment-counter {
+    margin: 10px 0px 20px;
+    float: right;
+  }
+  
+  .likes-counter {
+    padding-top: 10px;
+    text-align: left;
+  }
+  
+  /* used for Resource page */
 
   .row{
     column-count: 2;
   }
-
+  
   .column-a {
     float: left;
     width: 40%;
   }
-
+  
   .column-b {
     float: left;
   }
-
+  
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */

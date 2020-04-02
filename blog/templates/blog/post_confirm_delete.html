@@ -1,9 +1,11 @@
 {% extends "blog/base.html" %}
 {% block content %}
+
 	<!-- 
 	This shows the registration form
 	It also gives the user an option to sign in if they already have an account
 	 -->
+	 
 	<div class="content-section">
 		<form method="POST">
 			{% csrf_token %}
@@ -17,5 +19,6 @@
 			</div>
 		</form>
 	</div>
+
 {% endblock content %}
 

@@ -1,18 +1,19 @@
 {% extends "blog/base.html" %}
 {% block content %}
+
 <article class="media content-section">
     <div class="content-section column-a">
         <h3 class="article-title">Resources</h3>
         <p class='text-muted'> A few links to some useful information</p>
         <div class="list-group">
             <a href="/resources/youtube" class="list-group-item list-group-item-action">YouTube Videos and Playlists</a>
-            <a href="#" class="list-group-item list-group-item-action">Tools and Documentation</a>
+            <a href="/resources/documentation" class="list-group-item list-group-item-action">Tools and Documentation</a>
             <a href="/resources/subreddits" class="list-group-item list-group-item-action">Subreddits</a>
-            <a href="#" class="list-group-item list-group-item-action">Forums</a>
-            <a href="#" class="list-group-item list-group-item-action">Blogs and Articles</a>
-            <a href="#" class="list-group-item list-group-item-action">Courses</a>
-            <a href="#" class="list-group-item list-group-item-action">Github Repositories</a>
-            <a href="#" class="list-group-item list-group-item-action">Other Resources</a>
+            <a href="/resources/forum" class="list-group-item list-group-item-action">Forums</a>
+            <a href="/resources/blogs" class="list-group-item list-group-item-action">Blogs and Articles</a>
+            <a href="/resources/courses" class="list-group-item list-group-item-action">Courses</a>
+            <a href="/resources/github" class="list-group-item list-group-item-action">Github Repositories</a>
+            <a href="/resources/etc" class="list-group-item list-group-item-action">Other Resources</a>
         </div>
     </div>
     <div class="column-b">
@@ -21,8 +22,8 @@
             {% for resource in resources %}
                 <p>{{ resource.formatted_markdown|safe }}</p>
             {% endfor %}
-        </div>
-            
+        </div>  
     </div>
 </article>
+
 {% endblock content %}
