@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 from . import sKeys
 import os
+from datetime import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,7 +37,6 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'markdownx',
-    # 'keyboard_shortcuts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,6 +128,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')    # Image folders based on date of upload
+MARKDOWNX_IMAGE_MAX_SIZE = {'size': (100, 100), 'quality': 90}          # Small pictures pls
+MARKDOWNX_UPLOAD_MAX_SIZE = 2 * 1024 * 1024                             # 2MB in Bytes
+
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog-home'
@@ -141,6 +146,7 @@ EMAIL_HOST_PASSWORD = sKeys.gmail_pw
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'kraboobee@gmail.com'
 SERVER_EMAIL = 'kraboobee@gmail.com'
+
 
 # HOTKEYS = [
 #             {'keys': 'n + p',  # New Blog Post

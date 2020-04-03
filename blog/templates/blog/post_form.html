@@ -12,13 +12,16 @@
 			{% csrf_token %}
 			<fieldset class="form-group">
 				<legend class="border-bottom mb-4">Blog Post</legend>
+				{{ form.media }}
 				{{ form|crispy }}
 			</fieldset>
 			<div class="form-group">
 				<button class="btn btn-outline-info" type="submit">Post</button>
+				<div class="markdown-info">
+					You can format your content field with <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>
+				</div>
 			</div>
 		</form>
 	</div>
 	
 {% endblock content %}
-

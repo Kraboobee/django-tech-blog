@@ -47,8 +47,10 @@
 	      </div>	      	
 	      {% endif %}
 	    </div>
-	    <h2 class="article-title">{{ object.title }}</h2>
-		<p class="article-content">{{ object.content }}</p>
+		<h2 class="article-title">{{ object.title }}</h2>
+		<div class="article-content">
+			{{ object.formatted_markdown | safe }}
+		</div>
 		<div class="likes-counter">
 			<p>
 				{% if request.user in post.likes.all %}
@@ -68,7 +70,7 @@
 				<div class="date">
 					<strong>{{ comment.user.username }}</strong> | <small class="text-muted">{{ comment.created_on|date:"F d, Y" }}</small> 
 				</div>
-				<p>{{ comment.body|linebreaks}}</p>
+				<p>{{ comment.body|linebreaks }}</p>
 			</div>
 		{% empty %}
 			<p>No comments here yet</p>

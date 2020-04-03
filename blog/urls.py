@@ -1,16 +1,16 @@
-from django.urls import path
-from .views import (
-	PostCreateView, 
-	PostDetailView, 
-	PostDeleteView,
-    PostLikeAPIToggle,
-	PostListView,
-	PostUpdateView,
-    ResourceListView,
-    SearchResultListView,
-    UserPostListView
-)
-from . import views
+from django.urls    import path
+from .views         import (
+                        PostCreateView, 
+                        PostDetailView, 
+                        PostDeleteView,
+                        PostLikeAPIToggle,
+                        PostListView,
+                        PostUpdateView,
+                        ResourceListView,
+                        SearchResultListView,
+                        UserPostListView
+                    )
+from .              import views
 
 urlpatterns = [
     path('',                            PostListView.as_view(),         name='blog-home'),

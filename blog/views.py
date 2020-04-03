@@ -1,29 +1,30 @@
-from django import forms
+from django 					import forms
 from django.contrib.auth.mixins import (
-	LoginRequiredMixin,
-	UserPassesTestMixin
-)
+									LoginRequiredMixin,
+									UserPassesTestMixin
+								)
 from django.contrib.auth.models import User
-from django.db.models import Q
-from django.views.generic import (
-	CreateView, 
-	DeleteView,
-	DetailView, 
-	ListView,
-	UpdateView
-)
-from django.forms import ModelForm
-from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models 			import Q
+from django.views.generic 		import (
+									CreateView, 
+									DeleteView,
+									DetailView, 
+									ListView,
+									UpdateView
+								)
+from django.forms 				import ModelForm
+from django.shortcuts 			import get_object_or_404, redirect, render
 import markdown
-from rest_framework.views import APIView
-from rest_framework import authentication, permissions
-from rest_framework.response import Response
-from .forms import CommentForm
-from .models import (
-	Comment,
-	Post, 
-	Resource
-)
+from rest_framework.views 		import APIView
+from rest_framework 			import authentication, permissions
+from rest_framework.response 	import Response
+from .forms 					import CommentForm
+from .models 					import (
+									Comment,
+									Post, 
+									Resource
+								)
+
 
 # Home page - A list of all posts
 class PostListView(ListView):
@@ -33,9 +34,11 @@ class PostListView(ListView):
 	ordering 			= ['-date_posted']
 	paginate_by 		= 5
 
+
 # Detailed view of an individual post
 class PostDetailView(DetailView):
 	model 				= Post
+
 
 # Form to submit a comment
 class CommentForm(forms.ModelForm):
@@ -43,6 +46,7 @@ class CommentForm(forms.ModelForm):
 	class Meta:
 		model 	= Comment
 		fields 	= ('body',)
+
 
 # Function to handle comment form
 def add_comment_to_post(request,pk):
@@ -59,6 +63,7 @@ def add_comment_to_post(request,pk):
 		form = CommentForm()
 	return render(request, 'blog/post_comment.html', {'form': form})
 
+
 # List of all posts by a user
 class UserPostListView(ListView):
 	model 				= Post
@@ -71,6 +76,7 @@ class UserPostListView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return Post.objects.filter(author=user).order_by('-date_posted')
 
+
 # Form to create a new post
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model 	= Post
@@ -79,6 +85,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 	def form_valid(self, form):
 		form.instance.author = self.request.user
 		return super().form_valid(form)
+
 
 # Form to update a post
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -95,6 +102,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 			return True
 		return False
 
+
 # Form to delete a post
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model 		= Post
@@ -105,6 +113,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user == post.author:
 			return True
 		return False
+
 
 # Function to like/unlike posts
 class PostLikeAPIToggle(APIView):
@@ -131,15 +140,19 @@ class PostLikeAPIToggle(APIView):
 				}
 		return Response(data)
 
+
 # About, Contact, and Resource Pages
 def about(request):
 	return render(request, 'blog/about.html', {'title': 'About'})
 
+
 def contact(request):
 	return render(request, 'blog/contact.html', {'title': 'Contact'})
 
+
 def resources(request):
 	return render(request, 'blog/resources.html', {'title': 'resources'})
+
 
 # Lists all resources within a category
 class ResourceListView(ListView):
@@ -150,6 +163,7 @@ class ResourceListView(ListView):
 	def get_queryset(self):
 		results = Resource.objects.filter(Q(category__icontains=self.kwargs.get('category')))
 		return results
+
 
 # List of posts containing a search keyword
 class SearchResultListView(ListView):
