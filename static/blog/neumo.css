@@ -6,6 +6,10 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: #cbd5db;
   }
+
+  img{
+    max-width:100%;
+  }
   
   ul {
     margin: 0;
@@ -81,23 +85,24 @@ body {
   .content-section {
     background: #002b36;
     box-shadow:  6px 6px 15px #00222a, 
-    -6px -6px 12px #00303d;
-    padding: 10px 20px;
+    -6px -6px 12px #003442;
+    padding: 20px 20px;
     border-radius: 20px;
     margin-bottom: 20px;
   }
   
   .comment {
-    margin: 20px 0px 20px;
+    margin: 20px 0px 0px;
   }
   
   .comment-counter {
-    margin: 10px 0px 20px;
+    margin: 10px 0px 5px;
     float: right;
   }
   
   .likes-counter {
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: left;
   }
   
@@ -114,6 +119,24 @@ body {
   
   .column-b {
     float: left;
+  }
+
+  .markdown-info{
+    background: #002b36;
+    box-shadow:  6px 6px 15px #00222a, 
+    -6px -6px 12px #003442;
+    padding: 10px 15px;
+    float: right;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .media{
+    padding-right: 25px;
+  }
+
+  .resources{
+    margin-bottom: 0px;
   }
   
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */
