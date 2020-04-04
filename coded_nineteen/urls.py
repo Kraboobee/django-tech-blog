@@ -25,7 +25,6 @@ urlpatterns = [
     		auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), 
     		name='password_reset_complete'),
     path('',                include('blog.urls')),
-    url(r'^ckeditor/',      include('ckeditor_uploader.urls')),
     url(r'^markdownx/',     include('markdownx.urls')),
 ]
 

@@ -1,0 +1,119 @@
+body {
+    color: #fff4f4; 
+    margin-top: 5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #cbd5db;
+  }
+  
+  ul {
+    margin: 0;
+  }
+  
+  .bg-custom {
+    background: linear-gradient(145deg, #002731, #002e3a);
+    box-shadow:  10px 10px 20px #00252f, 
+    -10px -10px 20px #00313d;
+  }
+
+  .site-header .navbar-nav .nav-link {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #c489db;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+
+  
+  .article-title {
+    color: #36838d;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #79e0a1;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+  
+  
+  .content-section {
+    background: #002b36;
+    box-shadow:  6px 6px 15px #00222a, 
+    -6px -6px 12px #00303d;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .comment {
+    margin: 20px 0px 20px;
+  }
+  
+  .comment-counter {
+    margin: 10px 0px 20px;
+    float: right;
+  }
+  
+  .likes-counter {
+    padding-top: 10px;
+    text-align: left;
+  }
+  
+  /* used for Resource page */
+
+  .row{
+    column-count: 2;
+  }
+  
+  .column-a {
+    float: left;
+    width: 40%;
+  }
+  
+  .column-b {
+    float: left;
+  }
+  
+  /* neumorphism with assistance from https://neumorphism.io/#002b36 */
