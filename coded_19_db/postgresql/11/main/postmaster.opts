@@ -1,0 +1,1 @@
+/usr/lib/postgresql/11/bin/postgres "-D" "/home/kaamraan/django-projects/django-tech-blog/coded_19_db/postgresql/11/main" "-c" "config_file=/etc/postgresql/11/main/postgresql.conf"

@@ -88,7 +88,11 @@ body {
     -6px -6px 12px #003442;
     padding: 20px 20px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+  }
+
+  .list-group{
+    margin-bottom: 10px;
   }
   
   .comment {
@@ -115,6 +119,11 @@ body {
   .column-a {
     float: left;
     width: 40%;
+    background: #002b36;
+    box-shadow:  6px 6px 15px #00222a, 
+    -6px -6px 12px #003442;
+    padding: 20px 20px;
+    border-radius: 20px;
   }
   
   .column-b {
@@ -133,10 +142,15 @@ body {
 
   .media{
     padding-right: 25px;
+    margin-bottom: 20px;
   }
 
   .resources{
-    margin-bottom: 0px;
+    padding-bottom: 10px;
+  }
+
+  .list-group{
+    padding-bottom: 10px;
   }
   
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */

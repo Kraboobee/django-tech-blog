@@ -22,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = sKeys.sk
+SECRET_KEY = sKeys.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['167.99.83.36', 'localhost']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -79,13 +80,23 @@ WSGI_APPLICATION = 'coded_nineteen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': sKeys.DB_NAME,
+        'USER': sKeys.DB_USER,
+        'PASSWORD': sKeys.DB_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -122,8 +133,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
+
+# USE_S3 = os.getenv('USE_S3') == 'TRUE'
+
+# aws settings
+# AWS_ACCESS_KEY_ID           = sKeys.AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY       = sKeys.AWS_SECRET_ACCESS_KEY
+# AWS_STORAGE_BUCKET_NAME     = sKeys.AWS_STORAGE_BUCKET_NAME
+# AWS_DEFAULT_ACL             = None
+# AWS_S3_CUSTOM_DOMAIN        = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# AWS_S3_OBJECT_PARAMETERS    = {'CacheControl': 'max-age=86400'}
+# # s3 static settings
+# AWS_LOCATION                = 'static'
+# STATIC_URL                  = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+# STATICFILES_STORAGE         = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
@@ -138,12 +165,25 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com' 
-EMAIL_HOST_USER = 'kraboobee@gmail.com'
-EMAIL_HOST_PASSWORD = sKeys.gmail_pw
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'kraboobee@gmail.com'
-SERVER_EMAIL = 'kraboobee@gmail.com'
+EMAIL_USE_TLS       = True
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST          = 'smtp.gmail.com' 
+EMAIL_HOST_USER     = 'kraboobee@gmail.com'
+EMAIL_HOST_PASSWORD = sKeys.GMAIL_PASSWORD
+EMAIL_PORT          = 587
+DEFAULT_FROM_EMAIL  = 'kraboobee@gmail.com'
+SERVER_EMAIL        = 'kraboobee@gmail.com'
 
+AWS_ACCESS_KEY_ID       = sKeys.AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY   = sKeys.AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = sKeys.AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_REGION_NAME = 'eu-west-1' #change to your region
+# AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+AWS_S3_FILE_OVERWRITE   = False
+AWS_DEFAULT_ACL         = None
+DEFAULT_FILE_STORAGE    = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS_S3_CUSTOM_DOMAIN    = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# STATICFILES_STORAGE     = 'storages.backends.s3boto3.S3Boto3Storage'

@@ -86,10 +86,14 @@ body {
   .content-section {
     background: #002b36;
     box-shadow:  6px 6px 15px #00222a, 
-    -6px -6px 12px #00303d;
-    padding: 10px 20px;
+    -6px -6px 12px #003341;
+    padding: 20px 20px;
     border-radius: 20px;
     margin-bottom: 20px;
+  }
+
+  .media {
+    padding-bottom: 10px;
   }
 
   .media-body{
@@ -121,8 +125,12 @@ body {
   }
   
   .resources{
-    padding-bottom: 10px;
+    margin-bottom: 10x;
   }
+
+/*  .list-group{
+    padding-bottom: 10px;
+  }*/
 
   .column-a {
     float: left;
@@ -147,10 +155,10 @@ body {
     float: right;
     background: #002b36;
     box-shadow:  6px 6px 15px #00222a, 
-    -6px -6px 12px #00303d;
+    -6px -6px 12px #003341;
     padding: 10px 20px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 
   /* neumorphism with assistance from https://neumorphism.io/#002b36 */
