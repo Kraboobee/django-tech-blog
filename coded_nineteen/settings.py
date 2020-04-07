@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = sKeys.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['coded-19.com', '167.99.83.36']
 
@@ -120,15 +120,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE   = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE       = 'UTC'
 
-USE_I18N = True
+USE_I18N        = True
 
-USE_L10N = True
+USE_L10N        = True
 
-USE_TZ = True
+USE_TZ          = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -160,25 +160,25 @@ MARKDOWNX_IMAGE_MAX_SIZE = {'size': (100, 100), 'quality': 90}          # Small 
 MARKDOWNX_UPLOAD_MAX_SIZE = 2 * 1024 * 1024                             # 2MB in Bytes
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK    = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'blog-home'
-LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL      = 'blog-home'
+LOGIN_URL               = 'login'
 
-EMAIL_USE_TLS       = True
-EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST          = 'smtp.gmail.com' 
-EMAIL_HOST_USER     = 'kraboobee@gmail.com'
-EMAIL_HOST_PASSWORD = sKeys.GMAIL_PASSWORD
-EMAIL_PORT          = 587
-DEFAULT_FROM_EMAIL  = 'kraboobee@gmail.com'
-SERVER_EMAIL        = 'kraboobee@gmail.com'
+EMAIL_USE_TLS           = True
+EMAIL_BACKEND           = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST              = 'smtp.gmail.com' 
+EMAIL_HOST_USER         = 'kraboobee@gmail.com'
+EMAIL_HOST_PASSWORD     = sKeys.GMAIL_PASSWORD
+EMAIL_PORT              = 587
+DEFAULT_FROM_EMAIL      = 'kraboobee@gmail.com'
+SERVER_EMAIL            = 'kraboobee@gmail.com'
 
 AWS_ACCESS_KEY_ID       = sKeys.AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY   = sKeys.AWS_SECRET_ACCESS_KEY
 AWS_STORAGE_BUCKET_NAME = sKeys.AWS_STORAGE_BUCKET_NAME
 
-AWS_S3_REGION_NAME = 'eu-west-1' #change to your region
+AWS_S3_REGION_NAME      = 'eu-west-1' #change to your region
 # AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 AWS_S3_FILE_OVERWRITE   = False

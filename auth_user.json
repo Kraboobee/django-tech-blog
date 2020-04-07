@@ -1,0 +1,92 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$Fzfwq9PQ1qI5$aNcanqW7iTJd79s9Kds4LcP1tNA05RVMQuelIp4OMck=",
+        "last_login": "2020-04-05T16:28:14.060Z",
+        "is_superuser": true,
+        "username": "Kaamraan",
+        "first_name": "",
+        "last_name": "",
+        "email": "kraboobee@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-02-11T09:50:39.196Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$8LZwdvODF7go$eP+DBuKu7Xg1V7TqxpS3NNXJoiedCHgypulCO4bZlzc=",
+        "last_login": "2020-03-03T12:27:01.112Z",
+        "is_superuser": false,
+        "username": "TestUser",
+        "first_name": "",
+        "last_name": "",
+        "email": "testuser@company.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-02-11T09:54:16Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$vg3RijmHAqpd$eHJvdwMFxNvedIn1+2SXUHw5/3dn9HUnHPOcv4KgUe4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "NewUser",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-02-12T11:35:41.714Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$ff773CxWgTVX$RTe/x3E3lCpZCJFNb3nSewrj4V+dpuQ6/W/clA/mqC8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "NewUser2",
+        "first_name": "",
+        "last_name": "",
+        "email": "NU2@company.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-02-12T11:47:51.376Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$cb7yDI3OAnRD$pG/kK2azErE/jrf8axzXSFJfcti9paDHaIKq9T815Vw=",
+        "last_login": "2020-03-03T12:41:09.311Z",
+        "is_superuser": false,
+        "username": "Kaamraan2",
+        "first_name": "",
+        "last_name": "",
+        "email": "kraboobee@company.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-03-03T12:41:04.430Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
