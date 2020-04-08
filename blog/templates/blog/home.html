@@ -54,20 +54,20 @@
 				<a href="{% url 'post-detail' post.id %}">read more</a>
 			</div>
 			<div class="likes-counter">
+				{% if user.is_authenticated %}
 					{% if request.user in post.likes.all %}
-
 					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
 						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike:
 						{{ post.likes.count }}</a>
-
 					{% else %}
-
 					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
 						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
 						{{ post.likes.count }}</a>
-
 					{% endif %}
-
+					<a class="btn btn-outline-success" style="float: right;" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+				{% else %}
+					<a class="btn btn-warning mr-2"  href="{% url 'login' %}">Like: {{ post.likes.count }}</a>
+				{% endif %}
 					<a class="comment-counter" href="{% url 'post-detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
 			</div>
 		  </div>
