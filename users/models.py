@@ -1,6 +1,5 @@
 from django.db 					import models
 from django.contrib.auth.models import User
-from django.core.exceptions 	import ValidationError
 # from PIL 						import Image
 import io
 from django.core.files.storage 	import default_storage as storage
@@ -29,13 +28,6 @@ class Profile(models.Model):
 	# image resizing function
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)
-
-
-
-def file_size(value): 
-	limit = 2 * 1024 * 1024
-	if value.size > limit:
-		raise ValidationError('File too large. Size should not exceed 2 MB.')
 
 		# img_read = storage.open(self.image.name, 'r')
 		# img = Image.open(img_read)
