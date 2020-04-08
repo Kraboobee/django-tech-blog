@@ -53,21 +53,27 @@
 		</div>
 		<div class="likes-counter">
 			<p>
-				{% if request.user in post.likes.all %}
-				<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
-					data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike:
-					{{ post.likes.count }}</a>
+				{% if user.is_authenticated %}
+					{% if request.user in post.likes.all %}
+					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
+						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Unlike:
+						{{ post.likes.count }}</a>
+					{% else %}
+					<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
+						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
+						{{ post.likes.count }}</a>
+					{% endif %}
+					<a class="btn btn-outline-success" style="float: right;" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 				{% else %}
-				<a class="btn btn-success like-btn mr-2" data-href="{% url 'post-like-api' post.id %}"
-					data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
-					{{ post.likes.count }}</a>
+					<a class="btn btn-warning like-btn mr-2"  href="{% url 'login' %}">Like: {{ post.likes.count }}</a>
+					<a class="btn btn-outline-warning" style="float: right;" href="{% url 'login' %}">Add Comment</a>
 				{% endif %}
-				<a class="btn btn-outline-success" style="float: right;" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 			</p>
 		</div>
 		{% for comment in post.comments.all  %}
 			<div class="comment content-section">
 				<div class="date">
+					<img class="rounded-circle article-img" src="{{ comment.user.profile.image.url }}">
 					<strong>{{ comment.user.username }}</strong> | <small class="text-muted">{{ comment.created_on|date:"F d, Y" }}</small> 
 				</div>
 				<p>{{ comment.body|linebreaks }}</p>
