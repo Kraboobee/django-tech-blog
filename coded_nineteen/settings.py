@@ -27,7 +27,7 @@ SECRET_KEY = sKeys.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['coded-19.com', '167.99.83.36']
+ALLOWED_HOSTS = [u'coded-19.com', '167.99.83.36']
 
 
 # Application definition
@@ -136,7 +136,13 @@ USE_TZ          = True
 # STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+#STATIC_ROOT ='/var/www/staticfiles'
 STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 
 # USE_S3 = os.getenv('USE_S3') == 'TRUE'
 

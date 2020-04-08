@@ -35,7 +35,7 @@ Django codeblocks are used to add the relevant data to each individual page
 	      </button>
 	      <div class="collapse navbar-collapse" id="navbarToggle">
 	        <div class="navbar-nav mr-auto">
-	          <a class="nav-item nav-link" href="/admin">Home</a>
+	          <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
 	          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
 	        </div>
 	        <!-- Navbar Right Side -->
@@ -79,7 +79,7 @@ Django codeblocks are used to add the relevant data to each individual page
 	        	Some additional info can be found below
 	        </p>
 	          <div class="list-group">
-	            <a href="#" class="list-group-item list-group-item-action">Latest Posts</a>
+	            <a href="{% url 'blog-home' %}" class="list-group-item list-group-item-action">Latest Posts</a>
 	            <a href="{% url 'resources' %}" class="list-group-item list-group-item-action">Resources</li>
 	            <a href="{% url 'blog-contact' %}" class="list-group-item list-group-item-action">Contact</a>
 				</a>
