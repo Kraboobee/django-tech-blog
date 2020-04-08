@@ -72,7 +72,7 @@
 			<div class="comment content-section">
 				<div class="date">
 					<img class="rounded-circle article-img" src="{{ comment.user.profile.image.url }}">
-					<strong>{{ comment.user.username }}</strong> | <small class="text-muted">{{ comment.created_on|date:"F d, Y" }}</small> 
+					<a class="mr-2" href="{% url 'user-posts' comment.user.username %}"></a> | <small class="text-muted">{{ comment.created_on|date:"F d, Y" }}</small> 
 				</div>
 				<p>{{ comment.body|linebreaks }}</p>
 			</div>
