@@ -21,5 +21,5 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = forms.FileField(validators=[file_size])
+		fields = ['image']
 
