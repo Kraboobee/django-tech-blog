@@ -64,7 +64,6 @@
 						data-likes="{{ post.likes.count }}" href="{% url 'post-like-api' post.id %}">Like:
 						{{ post.likes.count }}</a>
 					{% endif %}
-					<a class="btn btn-outline-success" style="float: right;" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 				{% else %}
 					<a class="btn btn-warning mr-2"  href="{% url 'login' %}">Like: {{ post.likes.count }}</a>
 				{% endif %}
